@@ -1,0 +1,10 @@
+#this program will take a range (two numbers) from user and will print the sum of only even numbers within that range
+
+x = int(input("give a number "))   #takes a number as first end point
+y = int(input("give a number "))  #takes a number as first end point
+sum = 0                           
+while x<=y:                     # while loop to sum
+    if x%2==0:                  # if-statement so it only adds even numbers
+        sum=sum+x
+    x+=1
+print(sum)                      #printing sum
