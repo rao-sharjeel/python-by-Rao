@@ -1,0 +1,8 @@
+weight = int(input("Enter your weight: "))
+unit = input("(K)g or (L)bs: ")
+if unit.lower() == 'l':
+    print(weight*0.45)
+elif unit.lower() == 'k':
+    print(weight/0.45)
+else:
+    print("Wrong input")
