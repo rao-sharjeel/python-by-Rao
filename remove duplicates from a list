@@ -1,0 +1,6 @@
+numbers = [5, 2, 555, 7, 111, 7, 2, 111, 2, 2, 5, 5]
+unique = []
+for num in numbers:
+    if num not in unique:
+        unique.append(num)
+print(unique)
