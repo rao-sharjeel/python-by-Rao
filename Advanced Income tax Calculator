@@ -1,0 +1,33 @@
+import pandas as pd
+from openpyxl import load_workbook 
+import pandas as pd
+from openpyxl import load_workbook 
+
+monthly_salary= int(input("Enter salary: "))
+salary = int(monthly_salary * 12)
+
+previous_slab = 0.0
+
+for i in range(2, len(sheet['A'])):
+    
+    if salary > sheet["B" + str(i)].value and salary < sheet["C" + str(i)].value:
+        tax_percent = sheet["G" + str(i)].value
+        extra_amount = sheet["H" + str(i)].value
+        if tax_percent != 0:
+            previous_slab = sheet["C" + str(i - 1)].value
+        break
+
+
+if tax_percent == 0 and salary < sheet["C" + str(len(sheet['A']))].value:
+    income_tax = 0
+elif tax_percent != 0 and salary < sheet["C" + str(len(sheet['A']))].value:
+    income_tax = (float(salary - previous_slab) * (tax_percent/100)) + extra_amount
+else:
+    income_tax = float(salary - 75000000) * (35/100) + 21420000
+    tax_percent = 35
+
+print(f"Monthly Income : Rs. {monthly_salary}")
+print(f"Yearly Income : Rs. {salary}")
+print(f"Tax Percent : {tax_percent} %")
+print(f"Income Tax : Rs. {income_tax}")
+print(f"Monthly Income Tax : Rs. {round(income_tax /12)}")
