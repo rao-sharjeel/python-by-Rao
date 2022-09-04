@@ -1,0 +1,19 @@
+
+str = "A very very long string, this is to check if the algorithm will split the line after every 3 words you can check now"
+new_str = ""
+spaces = 0
+for word in str.split(" "):
+    spaces += 1
+    new_str += word
+
+    if spaces == 3:
+        new_str += "\n"
+        spaces = 0
+    else:
+        new_str += " "
+
+print("str")
+print(str)
+print("\n")
+print("new_str")
+print(new_str)
