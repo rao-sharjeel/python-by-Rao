@@ -1,0 +1,66 @@
+import random
+def get_digits(number):
+    digits = []
+    while number > 0:
+        digits.append(number % 10)
+        number = number // 10
+    return digits[::-1]
+
+def dig2num(digs):
+  mul = pow(10, len(digs)-1)
+  sum = 0
+  # print(digs)
+  for dig in digs:
+    sum += dig*mul
+    mul = mul // 10
+  return sum
+
+def same_digits(num1):
+
+  digits = get_digits(num1)
+  # print(digits)
+  return len(set(digits)) == 1
+
+def algo(num):
+
+  counter = 0
+  pres = []
+  while True:
+  # for i in range(0, 100):
+    
+    pre = num
+    if len(pres) < 6:
+      pres.append(pre)
+    else:
+      pres.insert(0, pre)
+    
+    digs = get_digits(num)
+    
+    accending = sorted(digs)
+    decending = sorted(digs, reverse=True)
+
+    acc = dig2num(accending)
+    dec = dig2num(decending)
+
+    print("acc: " + str(acc))
+    print("dec: " + str(dec))
+    
+    num = dec - acc
+    counter += 1
+    print("\nnum: " + str(num))
+    if num == first_num or num == pre or num in pres:
+    # if num == num:
+      print("Converged after " + str(counter) + " tries.")
+      print()
+      break
+  
+total_digits = 4
+
+num = random.randint(pow(10, total_digits-1), pow(10, total_digits) - 2)
+while( same_digits(num)):
+  num = random.randint(pow(10, total_digits-1), pow(10, total_digits) - 2)
+
+first_num = num
+print("First Number is " + str(first_num))
+
+algo(num)
